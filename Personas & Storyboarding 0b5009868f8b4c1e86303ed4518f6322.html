@@ -1,0 +1,679 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Personas &amp; Storyboarding</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="0b500986-8f8b-4c1e-8630-3ed4518f6322" class="page serif"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/met_william_morris_1877_willow.jpg" style="object-position:center 90%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">😅</span></div><h1 class="page-title"><strong><strong>Personas &amp; Storyboarding</strong></strong></h1></header><div class="page-body"><p id="5db46c83-0714-48a5-9fec-3dc0e673c624" class=""><mark class="highlight-gray">Oct 2022 / CSCI 1300 User Interface and User Experience</mark></p><div id="fd519786-e4b4-4ebb-9605-d5e8bd486c7d" class="column-list"><div id="1fca50f4-09ef-4d19-b4ab-4e3a87a8ebab" style="width:75%" class="column"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c8096bf7-c303-4642-b20c-72395abda372"><div style="font-size:1.5em"><span class="icon">📚</span></div><div style="width:100%">This Portfolio is specially design for the CSCI 1300 User Interface and User Experience’s first assignment. I created Personas and Storyboarding based on my observations and interview of people who are using the <mark class="highlight-red"><strong>Card Reader</strong></mark><mark class="highlight-red"> </mark>of Rockefeller Library Gate. 
+
+In this Portfolio, I recorded the process about how I investigate, think, interview and create Personas and StoryBoarding. I list it at the the right    <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>▹</mo></mrow><annotation encoding="application/x-tex">\triangleright</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">▹</span></span></span></span></span><span>﻿</span></span></div></figure></div><div id="c652607d-1b81-4bbb-a5e5-e85fa70e8ab8" style="width:25%" class="column"><ol type="1" id="058d8bc2-bed4-41f4-8975-073ff4e7471e" class="numbered-list" start="1"><li>Preparation</li></ol><ol type="1" id="e9c896aa-6c2e-49af-8c0e-446d233d8512" class="numbered-list" start="2"><li>Recording Observations</li></ol><ol type="1" id="f5e308c8-b43b-4de4-ab61-1e5444395545" class="numbered-list" start="3"><li>Personas</li></ol><ol type="1" id="8fc1ef62-5112-4783-a50f-c79d550ee97f" class="numbered-list" start="4"><li>Storyboarding</li></ol></div></div><p id="86971d95-1ac1-40c5-96fd-8c8083138b50" class="">
+</p><h2 id="1d20ede3-c784-4b57-9b91-3adc5e8e73d2" class="block-color-blue_background"><mark class="highlight-blue">1. </mark><mark class="highlight-blue"><strong>Preparation</strong></mark></h2><p id="5a281edd-723a-4a19-88f2-b6b2dae25963" class="">
+</p><figure id="addcac44-f124-4320-8e65-e4ef8977cfde" class="image"><a href="Personas%20&amp;%20Storyboarding%200b5009868f8b4c1e86303ed4518f6322/Untitled.jpeg"><img style="width:4488px" src="Personas%20&amp;%20Storyboarding%200b5009868f8b4c1e86303ed4518f6322/Untitled.jpeg"/></a></figure><p id="d7eab793-93c0-44c2-8d21-2a5c853d2fe8" class="">This is the Card Reader of Rockefeller Library’s entry gate, students have to swipe their card to go into the library. </p><p id="c852e20b-45c6-4d10-91a8-83faee1fb78f" class="">The Card Reader is consists of <mark class="highlight-teal_background">a slot for card swiping</mark>, <mark class="highlight-teal_background">three indicator lights</mark>, <mark class="highlight-teal_background">wired indicate sign</mark> and <mark class="highlight-teal_background">covered circuits (the grey panel part)</mark>.</p><p id="948d092f-c172-4895-baeb-1cafcbc9aa6b" class="">Based on people’s interaction with the Card Reader, several questions about experience, expectation, motivation and challenge have been proposed.</p><p id="c9d4ef3d-99ea-4d16-a2b0-0d0f4291888f" class="">
+</p><h2 id="65d580db-0f41-4761-aadd-69476c4512b7" class="block-color-blue_background"><mark class="highlight-blue">2. </mark><mark class="highlight-blue"><strong>Recording Observations</strong></mark></h2><div id="b3ed63cb-c562-48ab-ad8c-af9d350c732c" class="column-list"><div id="aafb17dc-9a6c-49fd-b68e-71faa30cfc08" style="width:50%" class="column"><h3 id="14b1962d-c425-49db-91d0-c9980dd40993" class="">💡<mark class="highlight-purple">Key Observations</mark></h3><ol type="1" id="bbe92b1f-b57c-4d35-89b7-51c6b621814e" class="numbered-list" start="1"><li>All three users swiped their cards on the Card Reader very naturally rather than tap card on the grey panel.</li></ol><ol type="1" id="9f8b399a-b0b8-4db1-a25c-de6466c6391b" class="numbered-list" start="2"><li>All three users pass the gate after several  (&gt;2)swipes.</li></ol><ol type="1" id="07b081a8-8097-45cb-a034-1270a0e0e247" class="numbered-list" start="3"><li>People who are not familiar with the using of card reader is highly to be blocked because only swipe down and wait a sec and then swipe up they can open the gate.</li></ol><ol type="1" id="efacab1b-4dd0-4639-9146-d0da8725d330" class="numbered-list" start="4"><li>When people fail to swipe card, they tend to swipe with another side of card</li></ol><ol type="1" id="3d00fa3b-b53c-48a1-a397-cec9923322c6" class="numbered-list" start="5"><li>People feel nervous when they try more than 3 times</li></ol></div><div id="bbfe89da-755a-4fb3-849d-f85cde2e15f5" style="width:50%" class="column"><h3 id="5c309762-3cb7-4345-bfff-707f12b0b20b" class="">💡<mark class="highlight-orange">Questions</mark></h3><ol type="1" id="18f17c71-5c6f-46ac-8cb2-62d774959e11" class="numbered-list" start="1"><li>What do you think about this card reader?</li></ol><ol type="1" id="5b6fd30c-b4cb-4b64-9c23-38fa61310955" class="numbered-list" start="2"><li>Normally, how many times do you have to swipe your card to pass the gate?</li></ol><ol type="1" id="49577388-cbb3-4b17-a68c-a4662a9c340b" class="numbered-list" start="3"><li>(If many times) Why do you think you need to try many times?</li></ol><ol type="1" id="429d8761-b719-4d94-b510-5cf00cc0efa4" class="numbered-list" start="4"><li>Is there any Good or Bad design on the card reader?</li></ol><ol type="1" id="fe4b8acc-6bde-4c5f-ae39-8c5ee1a7671c" class="numbered-list" start="5"><li>How this design impact your experience?</li></ol><ol type="1" id="2ac3e25b-2a71-41ca-b4dc-21b24455834d" class="numbered-list" start="6"><li>Compared to the inner door card reader, which one you like more?</li></ol></div></div><h3 id="504131e8-0a7b-4c52-926d-5d267a4197dc" class="">🗒️<mark class="highlight-red">Response</mark></h3><ul id="1314e702-44f8-4e17-b189-6d7713e6881b" class="bulleted-list"><li style="list-style-type:disc">People are confused about which side of card should be used to swipe.</li></ul><ul id="8ad939e0-d9fb-483c-a604-ef409d03a926" class="bulleted-list"><li style="list-style-type:disc">People have to try multiple times to swipe their card unless they are lucky today.</li></ul><ul id="9a95e78d-89fb-42ad-af34-781db1d2aac8" class="bulleted-list"><li style="list-style-type:disc">People believe any new user will be embarrassedly blocked in front of the gate when he/she first time come to there because of the special counterintuitive swipe method.</li></ul><ul id="94a048c5-0ecb-4a76-8174-910582b078ea" class="bulleted-list"><li style="list-style-type:disc">People prefer card reader with obvious mark of card swiping and think the small sign on the Rockefeller’s card reader is helpless, and the whole design is a disaster. </li></ul><p id="f6a199ce-9968-4391-977c-6e51dae0a51a" class="">
+</p><h2 id="88b4cd97-a3b6-42e8-a3a4-3dbf38f797e2" class="block-color-blue_background"><mark class="highlight-blue">3. Personas</mark></h2><div id="c3670f75-75f5-45cd-b88b-da7c153631eb" class="column-list"><div id="2a3029d2-1761-40c1-ab1f-2281f70efcbb" style="width:50%" class="column"><p id="fd753b1c-1796-4470-8fd5-232cb7208215" class=""><strong>Liam:</strong></p><ul id="5c120688-8727-4a1d-b929-a79de8178ab5" class="bulleted-list"><li style="list-style-type:disc">Liam is a senior student in Brown University and he often go to the Rockefeller library for study. Today, Liam rushes into the Rockefeller Library for study because he get the final exam tomorrow. </li></ul><ul id="84edc494-e6bf-4fa1-a277-04d9249540bb" class="bulleted-list"><li style="list-style-type:disc">He is not sure about which side of card should be used to swipe</li></ul><ul id="af27ac31-b984-4826-a620-16951c12c4f6" class="bulleted-list"><li style="list-style-type:disc">This persona represents majority of students who have been to the Rockefeller Library before, they know how to swipe card in that special card reader but still cannot memory which side should be used.</li></ul><figure id="000ac32d-e8f3-4280-8881-de0fa274e5de" class="image"><a href="Personas%20&amp;%20Storyboarding%200b5009868f8b4c1e86303ed4518f6322/Untitled.png"><img style="width:2227px" src="Personas%20&amp;%20Storyboarding%200b5009868f8b4c1e86303ed4518f6322/Untitled.png"/></a></figure><p id="f5fc81c5-0ade-4b8e-9395-8236bf79f4d9" class="block-color-gray">
+</p></div><div id="568e187b-bb1c-4713-ade2-1711aa4f25a3" style="width:50%" class="column"><p id="384c5179-f3b3-4232-b15b-dd95af37dd6f" class=""><strong>Jamie:</strong></p><ul id="8aa9b957-ad51-4b2a-a987-63b528cba188" class="bulleted-list"><li style="list-style-type:disc">Liam is a first year master student of Brown University, he never visited the Rockefeller Library before because he like to study at home. He decides to borrow books from Library today. </li></ul><ul id="c37218cc-0ebd-4573-b3e7-e0e644aa2c1b" class="bulleted-list"><li style="list-style-type:disc">He don’t know how to swipe the card correctly no matter swipe the correct side.</li></ul><ul id="6789ae71-a66b-4b01-8836-2e3aff4f13bd" class="bulleted-list"><li style="list-style-type:disc">This persona represents students who are first time come to Rockefeller Library. They even don’t know how to swipe their card correctly.</li></ul><figure id="634231a3-3e52-4c5e-abd6-09944be97e74" class="image"><a href="Personas%20&amp;%20Storyboarding%200b5009868f8b4c1e86303ed4518f6322/Untitled%201.png"><img style="width:624px" src="Personas%20&amp;%20Storyboarding%200b5009868f8b4c1e86303ed4518f6322/Untitled%201.png"/></a></figure><p id="f72d237c-9781-4ae6-a471-e26fcf9b3c4b" class="">
+</p></div></div><h3 id="f2de4085-7389-4c6f-b140-83f1d4284617" class="block-color-blue_background"><mark class="highlight-blue">3. Storyboarding</mark></h3><p id="380d46da-18c8-455c-b8cc-38a8bada29b4" class="">
+</p><figure id="0e1ae693-7aae-43ec-a437-09fb9260506a" class="image"><a href="Personas%20&amp;%20Storyboarding%200b5009868f8b4c1e86303ed4518f6322/Untitled%201.jpeg"><img style="width:1200px" src="Personas%20&amp;%20Storyboarding%200b5009868f8b4c1e86303ed4518f6322/Untitled%201.jpeg"/></a></figure><ol type="1" id="1732d4e1-8a37-44d2-b661-67d76610570a" class="numbered-list" start="1"><li>Liam is a student in Brown University, today is the first day he come to the Rockefeller Library. He is fully prepared for staying library and study until 2 A.M</li></ol><ol type="1" id="110e7fe4-1818-4593-aee1-e67fc640f3df" class="numbered-list" start="2"><li>He find out that he need to swipe his ID card to get into the gate, so he pulled out his card. After careful observation, Liam find that there’s no indication of which side of card should be used to swipe. He then just swipe card by random side.</li></ol><ol type="1" id="43884e39-f68c-4d2e-95d8-c882638c7a8b" class="numbered-list" start="3"><li>Liam swipes his card through the slot, but the card reader ring out the error sound and the red indication light turn on.</li></ol><ol type="1" id="7026c600-6a3a-44bf-a717-eccac72201e9" class="numbered-list" start="4"><li>Liam is a little bit confused , but he believe this is because of he swipe the wrong side of card, so he reverse the card and swipe again. This time, the red light remains off but the gate didn’t open yet.</li></ol><ol type="1" id="24357bcc-6133-4eb5-8ad1-85a73523f918" class="numbered-list" start="5"><li>Liam is annoyed by the card reader, he think his card’s magnetic stripe may have some problems. So, Liam tries to swipe his card again and again with more pressure on it.</li></ol><ol type="1" id="ac3ffa77-ce3e-4cbd-9695-0f8ee2d985a6" class="numbered-list" start="6"><li>Liam feels very angry and embarrassed since many students are waiting for him. He has to give up and back home. </li></ol><p id="e7d7ea81-ba98-4d69-890c-00403ab14346" class="">
+</p></div></article></body></html>
